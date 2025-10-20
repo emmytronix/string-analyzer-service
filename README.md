@@ -2,14 +2,17 @@
 
 A RESTful API service that analyzes strings and stores their computed properties.
 
+## Live Demo
+https://string-analyzer-service-production.up.railway.app/
+
 ## Features
 
-- Analyze strings to compute various properties
-- Store analyzed strings
-- Retrieve stored strings
-- Filter strings based on various criteria
-- Natural language filtering
-- Delete strings
+- Length of the string
+- Whether the string is a palindrome (reads the same forwards and backwards)
+- Count of unique characters
+- Word count (based on whitespace separation)
+- SHA-256 hash of the string
+- Character frequency map showing occurrence count of each character
 
 ## API Endpoints
 
@@ -119,7 +122,7 @@ Response (204 No Content):
 
 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/string-analyzer-service.git
+git clone https://github.com/emmytronix/string-analyzer-service.git
 cd string-analyzer-service
 ```
 

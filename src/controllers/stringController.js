@@ -15,14 +15,17 @@ class StringController {
         return res.status(422).json({ error: 'Value must be a string' });
       }
       
-      const analyzedString = stringAnalyzerService.analyzeString(value);
-      const result = stringModel.create(analyzedString);
-      
-      if (!result.success) {
-        return res.status(409).json({ error: result.error });
+      // Check if string exists before analyzing it
+      const existingString = stringModel.findByValue(value);
+      if (existingString.success) {
+        return res.status(409).json({ error: 'String already exists' });
       }
       
-      return res.status(201).json(result.data);
+      // Analyze and create the string
+      const analyzedString = stringAnalyzerService.analyzeString(value);
+      stringModel.create(analyzedString); // We already verified it doesn't exist
+      
+      return res.status(201).json(analyzedString);
     } catch (error) {
       next(error);
     }
